@@ -126,7 +126,7 @@ def process_all_items(data: List[Dict], model_name: str, language: str, max_work
     
     # 使用线程池并行处理
     processed_data = [None] * len(data)  # 预分配结果列表
-    with ThreadPoolExecutor(max_workers=max_workers) as executor:
+    with ThreadPoolExecutor(max_workers=1) as executor:
         # 提交所有任务
         future_to_idx = {
             executor.submit(process_single_item, chain, item, language): idx
